@@ -1,0 +1,1157 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[     47012,       1156]
+NotebookOptionsPosition[     45851,       1114]
+NotebookOutlinePosition[     46194,       1129]
+CellTagsIndexPosition[     46151,       1126]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "bits`per`digit", "]"}]}], ",", " ", 
+    RowBox[{"bits`per`digit", " ", "=", " ", "2"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Bits per high-radix digit (\>\"", ",", " ", 
+     RowBox[{"Dynamic", "[", "bits`per`digit", "]"}], ",", " ", 
+     "\"\<) : \\n\\t\>\"", ",", " ", 
+     RowBox[{"Slider", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"bits`per`digit", ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"ValueQ", "[", "bits`per`digit", "]"}], ",", 
+            RowBox[{"bits`per`digit", "=", "#1"}]}], "]"}], "&"}]}], "]"}], 
+       ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "6", ",", " ", "1"}], "}"}]}], "]"}]}], "]"}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"ValueQ", "[", "bits`per`digit", "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"radix", " ", ":=", " ", 
+     SuperscriptBox["2", "bits`per`digit"]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"radix", " ", "=", " ", "0"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "\[Alpha]", "]"}]}], ",", " ", 
+    RowBox[{"\[Alpha]", " ", "=", " ", "3"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<\[Alpha] (\>\"", ",", " ", 
+     RowBox[{"Dynamic", "[", "\[Alpha]", "]"}], ",", " ", 
+     "\"\<) : \\n\\t\>\"", ",", " ", 
+     RowBox[{"Slider", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"\[Alpha]", ",", " ", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"ValueQ", "[", "\[Alpha]", "]"}], ",", 
+            RowBox[{"\[Alpha]", "=", 
+             RowBox[{"IntegerPart", "[", "#1", "]"}]}]}], "]"}], "&"}]}], 
+        "]"}], ",", " ", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Dynamic", "[", 
+          RowBox[{"\[LeftCeiling]", 
+           FractionBox["radix", "2"], "\[RightCeiling]"}], "]"}], ",", 
+         RowBox[{"Dynamic", "[", 
+          RowBox[{"radix", " ", "-", " ", "1"}], "]"}], ",", " ", "1"}], 
+        "}"}]}], "]"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "\[Beta]", "]"}]}], ",", " ", 
+    RowBox[{"\[Beta]", " ", "=", " ", "3"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<\[Beta] (\>\"", ",", " ", 
+     RowBox[{"Dynamic", "[", "\[Beta]", "]"}], ",", " ", "\"\<) : \\n\\t\>\"",
+      ",", " ", 
+     RowBox[{"Slider", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"\[Beta]", ",", " ", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"ValueQ", "[", "\[Beta]", "]"}], ",", 
+            RowBox[{"\[Beta]", "=", 
+             RowBox[{"IntegerPart", "[", "#1", "]"}]}]}], "]"}], "&"}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Dynamic", "[", 
+          RowBox[{"\[LeftCeiling]", 
+           FractionBox["radix", "2"], "\[RightCeiling]"}], "]"}], ",", 
+         RowBox[{"Dynamic", "[", 
+          RowBox[{"radix", " ", "-", " ", "1"}], "]"}], ",", " ", "1"}], 
+        "}"}]}], "]"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "Bp", "]"}]}], ",", " ", 
+    RowBox[{"Bp", " ", "=", " ", "3"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<\!\(\*SuperscriptBox[\(B\), \(+\)]\) (\>\"", ",", " ", 
+    RowBox[{"Dynamic", "[", "Bp", "]"}], ",", " ", "\"\<) : \\n\\t\>\"", ",", 
+    " ", 
+    RowBox[{"Slider", "[", 
+     RowBox[{
+      RowBox[{"Dynamic", "[", 
+       RowBox[{"Bp", ",", " ", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"ValueQ", "[", "Bp", "]"}], ",", 
+           RowBox[{"Bp", "=", 
+            RowBox[{"IntegerPart", "[", "#1", "]"}]}]}], "]"}], "&"}]}], 
+       "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", 
+        RowBox[{"Dynamic", "[", 
+         RowBox[{"radix", " ", "-", " ", "1"}], "]"}], ",", " ", "1"}], 
+       "}"}]}], "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "Bm", "]"}]}], ",", " ", 
+    RowBox[{"Bm", " ", "=", " ", "0"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<\!\(\*SuperscriptBox[\(B\), \(-\)]\) (\>\"", ",", " ", 
+     RowBox[{"Dynamic", "[", "Bm", "]"}], ",", " ", "\"\<) : \\n\\t\>\"", ",",
+      " ", 
+     RowBox[{"Slider", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"Bm", ",", " ", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"ValueQ", "[", "Bm", "]"}], ",", 
+            RowBox[{"Bm", "=", 
+             RowBox[{"IntegerPart", "[", "#1", "]"}]}]}], "]"}], "&"}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"Dynamic", "[", 
+          RowBox[{"radix", " ", "-", " ", "1"}], "]"}], ",", " ", "1"}], 
+        "}"}]}], "]"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "n`x", "]"}]}], ",", " ", 
+    RowBox[{"n`x", " ", "=", " ", "3"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<n`x (\>\"", ",", " ", 
+     RowBox[{"Dynamic", "[", "n`x", "]"}], ",", " ", "\"\<) : \\n\\t\>\"", 
+     ",", " ", 
+     RowBox[{"Slider", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"n`x", ",", " ", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"ValueQ", "[", "n`x", "]"}], ",", 
+            RowBox[{"n`x", "=", "#1"}]}], "]"}], "&"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "12", ",", " ", "1"}], "}"}]}], "]"}]}], "]"}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "n`p", "]"}]}], ",", 
+    RowBox[{"n`p", " ", "=", " ", "4"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<n`p (\>\"", ",", " ", 
+     RowBox[{"Dynamic", "[", "n`p", "]"}], ",", " ", "\"\<) : \\n\\t\>\"", 
+     ",", " ", 
+     RowBox[{"Slider", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"n`p", ",", " ", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"ValueQ", "[", "n`p", "]"}], ",", 
+            RowBox[{"n`p", "=", "#1"}]}], "]"}], "&"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "12", ",", " ", "1"}], "}"}]}], "]"}]}], "]"}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ValueQ", "[", "Z", "]"}], " ", "\[Equal]", " ", "False"}], ",", 
+    " ", 
+    RowBox[{"Z", " ", "=", " ", "4"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Z (\>\"", ",", " ", 
+     RowBox[{"Dynamic", "[", "Z", "]"}], ",", " ", "\"\<) : \>\"", ",", " ", 
+     RowBox[{"Slider", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"Z", ",", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"ValueQ", "[", "Z", "]"}], ",", 
+            RowBox[{"Z", "=", "#1"}]}], "]"}], "&"}]}], "]"}], ",", " ", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", " ", "20", ",", " ", "1"}], "}"}], ",", " ", 
+       RowBox[{"ImageSize", "\[Rule]", "Small"}], ",", " ", 
+       RowBox[{"Appearance", "\[Rule]", " ", "Large"}]}], "]"}]}], "]"}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "fractional`bits`total", "]"}]}], ",", " ", 
+    RowBox[{"fractional`bits`total", " ", "=", " ", "23"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetterBar", "[", 
+   RowBox[{
+    RowBox[{"Dynamic", "[", 
+     RowBox[{"fractional`bits`total", ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"ValueQ", "[", "fractional`bits`total", "]"}], ",", 
+         RowBox[{"fractional`bits`total", "=", "#1"}]}], "]"}], "&"}]}], 
+     "]"}], ",", " ", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"23", " ", "\[Rule]", " ", "\"\<Single Precision\>\""}], ",", 
+      " ", "\[IndentingNewLine]", 
+      RowBox[{"52", "\[Rule]", " ", "\"\<Double Precision\>\""}], ",", " ", 
+      "\[IndentingNewLine]", 
+      RowBox[{"112", "\[Rule]", " ", "\"\<Quadruple Precision\>\""}]}], 
+     "}"}]}], "]"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "support`infinite`iterations", "]"}]}], ",", 
+    RowBox[{"support`infinite`iterations", " ", "=", " ", "False"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Checkbox", "[", 
+      RowBox[{"Dynamic", "[", 
+       RowBox[{"support`infinite`iterations", ",", " ", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"ValueQ", "[", "support`infinite`iterations", "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"support`infinite`iterations", "=", "#1"}]}], "]"}], 
+         "&"}]}], "]"}], "]"}], ",", 
+     "\"\< Share SRT table with fused multiplication/division (\>\"", ",", 
+     " ", "\[IndentingNewLine]", 
+     RowBox[{"Dynamic", "@", 
+      RowBox[{"Which", "[", 
+       RowBox[{
+       "support`infinite`iterations", ",", "\"\<Yes\>\"", ",", " ", "True", 
+        ",", " ", "\"\<No\>\""}], "]"}]}], ",", " ", "\"\<)\>\""}], "]"}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "use`carry`save", "]"}]}], ",", 
+    RowBox[{"use`carry`save", "=", " ", "True"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Checkbox", "[", 
+      RowBox[{"Dynamic", "[", 
+       RowBox[{"use`carry`save", ",", " ", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"ValueQ", "[", "use`carry`save", "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"use`carry`save", "=", "#1"}]}], "]"}], "&"}]}], "]"}], 
+      "]"}], ",", "\"\< Support a carry-save residual (\>\"", ",", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Dynamic", "@", 
+      RowBox[{"Which", "[", 
+       RowBox[{
+       "use`carry`save", ",", "\"\<Yes\>\"", ",", " ", "True", ",", " ", 
+        "\"\<No\>\""}], "]"}]}], ",", " ", "\"\<)\>\""}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "mapping`unsigned`constants", "]"}]}], ",", " ", 
+    RowBox[{"mapping`unsigned`constants", " ", "=", " ", "False"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{
+    RowBox[{"Checkbox", "[", 
+     RowBox[{"Dynamic", "[", 
+      RowBox[{"mapping`unsigned`constants", ",", " ", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"ValueQ", "[", "mapping`unsigned`constants", "]"}], ",", 
+          RowBox[{"mapping`unsigned`constants", "=", "#1"}]}], "]"}], "&"}]}],
+       "]"}], "]"}], ",", "\[IndentingNewLine]", 
+    "\"\< Design an unsigned SRT table (\>\"", ",", "\[IndentingNewLine]", 
+    RowBox[{"Dynamic", "@", 
+     RowBox[{"Which", "[", 
+      RowBox[{
+      "mapping`unsigned`constants", ",", "\"\<Yes\>\"", ",", " ", "True", ",",
+        " ", "\"\<No\>\""}], "]"}]}], ",", "\"\<)\>\""}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "first`selection`iteration", "]"}]}], ",", " ", 
+    RowBox[{"first`selection`iteration", " ", "=", "  ", 
+     RowBox[{
+      RowBox[{"\[LeftFloor]", 
+       FractionBox["Z", "bits`per`digit"], "\[RightFloor]"}], "+", "2"}]}]}], 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<First selection iteration (\>\"", ",", 
+     RowBox[{"Dynamic", "[", "first`selection`iteration", "]"}], ",", 
+     "\"\<) : \>\"", ",", "\[IndentingNewLine]", 
+     RowBox[{"Slider", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"first`selection`iteration", ",", " ", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"ValueQ", "[", "first`selection`iteration", "]"}], ",", 
+            RowBox[{"first`selection`iteration", "=", 
+             RowBox[{"IntegerPart", "[", "#1", "]"}]}]}], "]"}], "&"}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Dynamic", "[", 
+          RowBox[{
+           RowBox[{"\[LeftFloor]", 
+            FractionBox["Z", "bits`per`digit"], "\[RightFloor]"}], "+", "2"}],
+           "]"}], ",", 
+         RowBox[{"Dynamic", "[", 
+          RowBox[{
+           RowBox[{"\[LeftFloor]", 
+            FractionBox["Z", "bits`per`digit"], "\[RightFloor]"}], "+", "8"}],
+           "]"}], ",", "1"}], "}"}], ",", " ", 
+       RowBox[{"Appearance", " ", "\[Rule]", " ", "Large"}], ",", " ", 
+       RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ",", " ", 
+     "\"\<\\n\>\""}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "mappings`maximum", "]"}]}], ",", " ", 
+    RowBox[{"mappings`maximum", " ", "=", " ", "64"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"!", 
+      RowBox[{"ValueQ", "[", "mappings`total", "]"}]}], ",", " ", 
+     RowBox[{"mappings`total", " ", "=", " ", "0"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "mappings`iteration`dependent", "]"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"mappings`iteration`dependent", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{"True", ",", " ", 
+       RowBox[{"{", "mappings`maximum", "}"}]}], "]"}]}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "mappings`iteration", "]"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"mappings`iteration", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"{", "mappings`maximum", "}"}]}], "]"}]}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"!", 
+     RowBox[{"ValueQ", "[", "mappings`xinterval", "]"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"mappings`xinterval", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       SuperscriptBox["2", 
+        RowBox[{"n`x", "-", "1"}]], ",", " ", 
+       RowBox[{"{", "mappings`maximum", "}"}]}], "]"}]}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"!", 
+      RowBox[{"ValueQ", "[", "mappings`mapped`xinterval", "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"mappings`mapped`xinterval", " ", "=", " ", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["2", 
+          RowBox[{"n`x", "-", "1"}]], " ", "-", " ", "3"}], ",", " ", 
+        RowBox[{"{", "mappings`maximum", "}"}]}], "]"}]}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"iteration`exact`x", " ", ":=", "  ", 
+    RowBox[{
+     RowBox[{"\[LeftFloor]", 
+      FractionBox[
+       RowBox[{"Z", " ", "+", " ", "n`x"}], "bits`per`digit"], 
+      "\[RightFloor]"}], " ", "+", " ", "1"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"intervals`mapping", " ", ":=", " ", 
+    RowBox[{"Join", "@@", 
+     RowBox[{"Table", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"digit_", ",", 
+            RowBox[{
+             RowBox[{"mappings`xinterval", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "+", "1"}], ",", "iteration"}], 
+           "}"}], " ", "\[Rule]", " ", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"digit", ",", 
+            RowBox[{
+             RowBox[{"mappings`mapped`xinterval", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "+", "1"}], ",", 
+            RowBox[{"Which", "[", 
+             RowBox[{
+              RowBox[{"mappings`iteration`dependent", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"mappings`iteration", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], ",", " ", "True", ",", " ", 
+              "iteration"}], "]"}]}], "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"iteration", ",", " ", "\[IndentingNewLine]", 
+           RowBox[{"Which", "[", 
+            RowBox[{
+             RowBox[{"mappings`iteration`dependent", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"mappings`iteration", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "}"}], ",", " ", "True", ",", 
+             " ", 
+             RowBox[{
+              RowBox[{"Range", "[", 
+               RowBox[{"1", ",", "iteration`exact`x"}], "]"}], "~", "Join", 
+              "~", 
+              RowBox[{"{", "\[Infinity]", "}"}]}]}], "]"}]}], 
+          "\[IndentingNewLine]", "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "mappings`total"}], "}"}]}], "]"}]}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Number of interval mappings to be used (\>\"", ",", 
+     RowBox[{"Dynamic", "[", "mappings`total", "]"}], ",", "\"\<) : \>\"", 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"Slider", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"mappings`total", ",", " ", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"ValueQ", "[", "mappings`total", "]"}], ",", 
+            RowBox[{"mappings`total", "=", "#1"}]}], "]"}], "&"}]}], "]"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "mappings`maximum", ",", "1"}], "}"}], ",", " ", 
+       RowBox[{"Appearance", " ", "\[Rule]", " ", "Large"}], ",", " ", 
+       RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ",", " ", 
+     "\"\<\\n\>\""}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Dynamic", "@", 
+   RowBox[{"Column", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Row", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\<[\>\"", ",", " ", "Large"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Checkbox", "[", 
+          RowBox[{"Dynamic", "[", 
+           RowBox[{"mappings`iteration`dependent", "[", 
+            RowBox[{"[", "#", "]"}], "]"}], "]"}], "]"}], ",", " ", 
+         "\"\< \>\"", ",", "\[IndentingNewLine]", "\"\<iteration (\>\"", ",", 
+         
+         RowBox[{"Dynamic", "[", 
+          RowBox[{"mappings`iteration", "[", 
+           RowBox[{"[", "#", "]"}], "]"}], "]"}], ",", "\"\<) : \>\"", ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"SetterBar", "[", 
+          RowBox[{
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"mappings`iteration", "[", 
+             RowBox[{"[", "#", "]"}], "]"}], "]"}], ",", " ", 
+           RowBox[{
+            RowBox[{"Range", "[", 
+             RowBox[{"first`selection`iteration", ",", "iteration`exact`x"}], 
+             "]"}], " ", "~", "Join", "~", " ", 
+            RowBox[{"{", "\[Infinity]", "}"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Enabled", "\[Rule]", " ", 
+            RowBox[{"Dynamic", "[", 
+             RowBox[{"mappings`iteration`dependent", "[", 
+              RowBox[{"[", "#", "]"}], "]"}], "]"}]}], ",", 
+           RowBox[{"Appearance", "\[Rule]", "Large"}]}], "]"}], ",", " ", 
+         "\"\< , \>\"", ",", "\[IndentingNewLine]", "\"\<x interval (\>\"", 
+         ",", 
+         RowBox[{"Dynamic", "[", 
+          RowBox[{"mappings`xinterval", "[", 
+           RowBox[{"[", "#", "]"}], "]"}], "]"}], ",", "\"\<) : \>\"", ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Slider", "[", 
+          RowBox[{
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"mappings`xinterval", "[", 
+             RowBox[{"[", "#", "]"}], "]"}], "]"}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             SuperscriptBox["2", 
+              RowBox[{"n`x", "-", "1"}]], ",", "1"}], "}"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+           RowBox[{"Appearance", "\[Rule]", "Large"}]}], "]"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\<]\>\"", ",", " ", "Large"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\< \[Rule] \>\"", ",", "Large", ",", " ", "Bold"}], 
+          "]"}], ",", "\[IndentingNewLine]", "\"\<x interval (\>\"", ",", 
+         RowBox[{"Dynamic", "[", 
+          RowBox[{"mappings`mapped`xinterval", "[", 
+           RowBox[{"[", "#", "]"}], "]"}], "]"}], ",", "\"\<) : \>\"", ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Slider", "[", 
+          RowBox[{
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"mappings`mapped`xinterval", "[", 
+             RowBox[{"[", "#", "]"}], "]"}], "]"}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             SuperscriptBox["2", 
+              RowBox[{"n`x", "-", "1"}]], ",", "1"}], "}"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+           RowBox[{"Appearance", "\[Rule]", "Large"}]}], "]"}]}], "}"}], 
+       "]"}], "&"}], " ", "/@", "  ", "\[IndentingNewLine]", 
+     RowBox[{"Range", "[", 
+      RowBox[{"1", ",", " ", "mappings`total"}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<Mappings : \>\"", ",", 
+    RowBox[{"Dynamic", "@", "intervals`mapping"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdy1soQ3EAx/FDKJeV1iRFUStLSEdJTPzJJg9iaRvlkqLZXKaZyymSW3N7
+oKyktBX2YLmkKGHiBeUBpZTFKNmZtUSUh8P/dx6+fZ6+aS3dmtZwhmGSafDq
+4qa3+slPAnEKK+Sqbjk4em8fguzHiqyGulCfmwhPjTM/tdTa4JHoeXOCe87n
+J0qpYgtOemQ561RJrFxUeykYyht5Iu1oNEHPRlQPtI7tWWCE4AzBtveCT8i9
+zDMq6rYqIgy2nfz+dVIvkwRRj1o2YqU+6/JF87JC13ID/Ur3eThZZLZVtvPk
+Ld6xCh8mutxw6WtwF0pdqgeliSdO3bEXHi7OFpdQzdFB0al1oQlu6l1G+K21
+W+BAk7wPHkwUcjCyITAM+9q/RmF/arQNJlqWZ6Gy60BUGxybh+OMW1TIPiNe
+6s50ZBncY+tYnhrDnhHokMgroN6gqYLSTMdrSgdP7hRror70R1UGNfCcp4b/
+we7icA==
+  "]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Bits per high-radix digit (\"\>", "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[bits`per`digit, StandardForm],
+    ImageSizeCache->{7., {0., 8.}}], 
+   "\[InvisibleSpace]", "\<\") : \\n\\t\"\>", "\[InvisibleSpace]", 
+   SliderBox[Dynamic[bits`per`digit, If[
+      ValueQ[bits`per`digit], bits`per`digit = #]& ], {1, 6, 1}]}],
+  SequenceForm["Bits per high-radix digit (", 
+   Dynamic[bits`per`digit], ") : \n\t", 
+   Slider[
+    Dynamic[bits`per`digit, If[
+      ValueQ[bits`per`digit], bits`per`digit = #]& ], {1, 6, 1}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.546451168672741*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\[Alpha] (\"\>", "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[$CellContext`\[Alpha], StandardForm],
+    ImageSizeCache->{7., {1., 8.}}], 
+   "\[InvisibleSpace]", "\<\") : \\n\\t\"\>", "\[InvisibleSpace]", 
+   SliderBox[Dynamic[$CellContext`\[Alpha], If[
+      ValueQ[$CellContext`\[Alpha]], $CellContext`\[Alpha] = 
+      IntegerPart[#]]& ], {
+     Dynamic[
+      Ceiling[$CellContext`radix/2]], 
+     Dynamic[$CellContext`radix - 1], 1}]}],
+  SequenceForm["\[Alpha] (", 
+   Dynamic[$CellContext`\[Alpha]], ") : \n\t", 
+   Slider[
+    Dynamic[$CellContext`\[Alpha], If[
+      ValueQ[$CellContext`\[Alpha]], $CellContext`\[Alpha] = 
+      IntegerPart[#]]& ], {
+     Dynamic[
+      Ceiling[$CellContext`radix/2]], 
+     Dynamic[$CellContext`radix - 1], 1}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.546451168696393*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\[Beta] (\"\>", "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[$CellContext`\[Beta], StandardForm],
+    ImageSizeCache->{7., {1., 8.}}], 
+   "\[InvisibleSpace]", "\<\") : \\n\\t\"\>", "\[InvisibleSpace]", 
+   SliderBox[Dynamic[$CellContext`\[Beta], If[
+      ValueQ[$CellContext`\[Beta]], $CellContext`\[Beta] = 
+      IntegerPart[#]]& ], {
+     Dynamic[
+      Ceiling[$CellContext`radix/2]], 
+     Dynamic[$CellContext`radix - 1], 1}]}],
+  SequenceForm["\[Beta] (", 
+   Dynamic[$CellContext`\[Beta]], ") : \n\t", 
+   Slider[
+    Dynamic[$CellContext`\[Beta], If[
+      ValueQ[$CellContext`\[Beta]], $CellContext`\[Beta] = 
+      IntegerPart[#]]& ], {
+     Dynamic[
+      Ceiling[$CellContext`radix/2]], 
+     Dynamic[$CellContext`radix - 1], 1}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.546451168726427*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(B\\), \\(+\\)]\\) (\"\>", 
+   "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[$CellContext`Bp, StandardForm],
+    ImageSizeCache->{7., {1., 8.}}], 
+   "\[InvisibleSpace]", "\<\") : \\n\\t\"\>", "\[InvisibleSpace]", 
+   SliderBox[Dynamic[$CellContext`Bp, If[
+      ValueQ[$CellContext`Bp], $CellContext`Bp = IntegerPart[#]]& ], {0, 
+     Dynamic[$CellContext`radix - 1], 1}]}],
+  SequenceForm["\!\(\*SuperscriptBox[\(B\), \(+\)]\) (", 
+   Dynamic[$CellContext`Bp], ") : \n\t", 
+   Slider[
+    Dynamic[$CellContext`Bp, If[
+      ValueQ[$CellContext`Bp], $CellContext`Bp = IntegerPart[#]]& ], {0, 
+     Dynamic[$CellContext`radix - 1], 1}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.5464511687437553`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\!\\(\\*SuperscriptBox[\\(B\\), \\(-\\)]\\) (\"\>", 
+   "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[$CellContext`Bm, StandardForm],
+    ImageSizeCache->{7., {1., 8.}}], 
+   "\[InvisibleSpace]", "\<\") : \\n\\t\"\>", "\[InvisibleSpace]", 
+   SliderBox[Dynamic[$CellContext`Bm, If[
+      ValueQ[$CellContext`Bm], $CellContext`Bm = IntegerPart[#]]& ], {0, 
+     Dynamic[$CellContext`radix - 1], 1}]}],
+  SequenceForm["\!\(\*SuperscriptBox[\(B\), \(-\)]\) (", 
+   Dynamic[$CellContext`Bm], ") : \n\t", 
+   Slider[
+    Dynamic[$CellContext`Bm, If[
+      ValueQ[$CellContext`Bm], $CellContext`Bm = IntegerPart[#]]& ], {0, 
+     Dynamic[$CellContext`radix - 1], 1}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.54645116876061*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"n`x (\"\>", "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[n`x, StandardForm],
+    ImageSizeCache->{7., {1., 8.}}], 
+   "\[InvisibleSpace]", "\<\") : \\n\\t\"\>", "\[InvisibleSpace]", 
+   SliderBox[Dynamic[n`x, If[
+      ValueQ[n`x], n`x = #]& ], {1, 12, 1}]}],
+  SequenceForm["n`x (", 
+   Dynamic[n`x], ") : \n\t", 
+   Slider[
+    Dynamic[n`x, If[
+      ValueQ[n`x], n`x = #]& ], {1, 12, 1}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.5464511687770767`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"n`p (\"\>", "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[n`p, StandardForm],
+    ImageSizeCache->{7., {0., 8.}}], 
+   "\[InvisibleSpace]", "\<\") : \\n\\t\"\>", "\[InvisibleSpace]", 
+   SliderBox[Dynamic[n`p, If[
+      ValueQ[n`p], n`p = #]& ], {1, 12, 1}]}],
+  SequenceForm["n`p (", 
+   Dynamic[n`p], ") : \n\t", 
+   Slider[
+    Dynamic[n`p, If[
+      ValueQ[n`p], n`p = #]& ], {1, 12, 1}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.546451168793583*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Z (\"\>", "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[$CellContext`Z, StandardForm],
+    ImageSizeCache->{7., {0., 8.}}], "\[InvisibleSpace]", "\<\") : \"\>", 
+   "\[InvisibleSpace]", 
+   SliderBox[Dynamic[$CellContext`Z, If[
+      ValueQ[$CellContext`Z], $CellContext`Z = #]& ], {0, 20, 1},
+    Appearance->Large,
+    ImageSize->Small]}],
+  SequenceForm["Z (", 
+   Dynamic[$CellContext`Z], ") : ", 
+   Slider[
+    Dynamic[$CellContext`Z, If[
+      ValueQ[$CellContext`Z], $CellContext`Z = #]& ], {0, 20, 1}, ImageSize -> 
+    Small, Appearance -> Large]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.5464511688100758`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[GridBox[{
+     {
+      SetterBox[Dynamic[fractional`bits`total, If[
+         ValueQ[fractional`bits`total], fractional`bits`total = #]& ], {
+       23}, "\<\"Single Precision\"\>"], 
+      SetterBox[Dynamic[fractional`bits`total, If[
+         ValueQ[fractional`bits`total], fractional`bits`total = #]& ], {
+       52}, "\<\"Double Precision\"\>"], 
+      SetterBox[Dynamic[fractional`bits`total, If[
+         ValueQ[fractional`bits`total], fractional`bits`total = #]& ], {
+       112}, "\<\"Quadruple Precision\"\>"]}
+    },
+    BaselinePosition->{1, 1},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   Deployed->True],
+  SetterBar[
+   Dynamic[fractional`bits`total, If[
+     ValueQ[fractional`bits`total], fractional`bits`total = #]& ], {
+   23 -> "Single Precision", 52 -> "Double Precision", 112 -> 
+    "Quadruple Precision"}]]], "Output",
+ CellChangeTimes->{
+  3.544864041294907*^9, 3.5448641161799507`*^9, 3.5448641582243137`*^9, 
+   3.545149131233706*^9, 3.545883951954194*^9, 3.54588440251782*^9, {
+   3.545891258630816*^9, 3.5458913310919437`*^9}, {3.545891604249734*^9, 
+   3.545891670408881*^9}, {3.5458917563764887`*^9, 3.545891761941471*^9}, 
+   3.545891835600747*^9, 3.5458919068081827`*^9, 3.545891944642453*^9, {
+   3.545891982210825*^9, 3.5458920021952753`*^9}, 3.5462118082847557`*^9, 
+   3.546212888984988*^9, 3.5462396228837357`*^9, 3.54624110471376*^9, 
+   3.546345245075816*^9, 3.54645116882756*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   CheckboxBox[Dynamic[support`infinite`iterations, If[
+      ValueQ[support`infinite`iterations], 
+      support`infinite`iterations = #]& ]], 
+   "\[InvisibleSpace]", "\<\" Share SRT table with fused \
+multiplication/division (\"\>", "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[
+     Which[support`infinite`iterations, "Yes", True, "No"], StandardForm],
+    ImageSizeCache->{22., {1., 7.}}], "\[InvisibleSpace]", "\<\")\"\>"}],
+  SequenceForm[
+   Checkbox[
+    Dynamic[support`infinite`iterations, If[
+      ValueQ[support`infinite`iterations], 
+      support`infinite`iterations = #]& ]], 
+   " Share SRT table with fused multiplication/division (", 
+   Dynamic[
+    Which[support`infinite`iterations, "Yes", True, "No"]], ")"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.546451168846077*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   CheckboxBox[Dynamic[use`carry`save, If[
+      ValueQ[use`carry`save], use`carry`save = #]& ]], 
+   "\[InvisibleSpace]", "\<\" Support a carry-save residual (\"\>", 
+   "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[
+     Which[use`carry`save, "Yes", True, "No"], StandardForm],
+    ImageSizeCache->{22., {1., 7.}}], "\[InvisibleSpace]", "\<\")\"\>"}],
+  SequenceForm[
+   Checkbox[
+    Dynamic[use`carry`save, If[
+      ValueQ[use`carry`save], use`carry`save = #]& ]], 
+   " Support a carry-save residual (", 
+   Dynamic[
+    Which[use`carry`save, "Yes", True, "No"]], ")"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.546451168879092*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   CheckboxBox[Dynamic[mapping`unsigned`constants, If[
+      ValueQ[mapping`unsigned`constants], mapping`unsigned`constants = #]& ]],
+    "\[InvisibleSpace]", "\<\" Design an unsigned SRT table (\"\>", 
+   "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[
+     Which[mapping`unsigned`constants, "Yes", True, "No"], StandardForm],
+    ImageSizeCache->{22., {1., 7.}}], "\[InvisibleSpace]", "\<\")\"\>"}],
+  SequenceForm[
+   Checkbox[
+    Dynamic[mapping`unsigned`constants, If[
+      ValueQ[mapping`unsigned`constants], mapping`unsigned`constants = #]& ]],
+    " Design an unsigned SRT table (", 
+   Dynamic[
+    Which[mapping`unsigned`constants, "Yes", True, "No"]], ")"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.546451168899762*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"First selection iteration (\"\>", "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[first`selection`iteration, StandardForm],
+    ImageSizeCache->{7., {0., 8.}}], "\[InvisibleSpace]", "\<\") : \"\>", 
+   "\[InvisibleSpace]", 
+   SliderBox[Dynamic[first`selection`iteration, If[
+      ValueQ[first`selection`iteration], first`selection`iteration = 
+      IntegerPart[#]]& ], {
+     Dynamic[Floor[$CellContext`Z/bits`per`digit] + 2], 
+     Dynamic[Floor[$CellContext`Z/bits`per`digit] + 8], 1},
+    Appearance->Large,
+    ImageSize->Medium], "\[InvisibleSpace]", "\<\"\\n\"\>"}],
+  SequenceForm["First selection iteration (", 
+   Dynamic[first`selection`iteration], ") : ", 
+   Slider[
+    Dynamic[first`selection`iteration, If[
+      ValueQ[first`selection`iteration], first`selection`iteration = 
+      IntegerPart[#]]& ], {
+     Dynamic[Floor[$CellContext`Z/bits`per`digit] + 2], 
+     Dynamic[Floor[$CellContext`Z/bits`per`digit] + 8], 1}, Appearance -> 
+    Large, ImageSize -> Medium], "\n"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.546451168932763*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of interval mappings to be used (\"\>", 
+   "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[mappings`total, StandardForm],
+    ImageSizeCache->{7., {1., 8.}}], "\[InvisibleSpace]", "\<\") : \"\>", 
+   "\[InvisibleSpace]", 
+   SliderBox[Dynamic[mappings`total, If[
+      ValueQ[mappings`total], mappings`total = #]& ], {0, 64, 1},
+    Appearance->Large,
+    ImageSize->Medium], "\[InvisibleSpace]", "\<\"\\n\"\>"}],
+  SequenceForm["Number of interval mappings to be used (", 
+   Dynamic[mappings`total], ") : ", 
+   Slider[
+    Dynamic[mappings`total, If[
+      ValueQ[mappings`total], mappings`total = #]& ], {0, 64, 1}, Appearance -> 
+    Large, ImageSize -> Medium], "\n"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.546451168966152*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   Column[
+    Map[Row[{
+       Style["[", Large], 
+       Checkbox[
+        Dynamic[
+         Part[mappings`iteration`dependent, #]]], " ", "iteration (", 
+       Dynamic[
+        Part[mappings`iteration, #]], ") : ", 
+       SetterBar[
+        Dynamic[
+         Part[mappings`iteration, #]], 
+        Join[
+         Range[first`selection`iteration, iteration`exact`x], {Infinity}], 
+        Enabled -> Dynamic[
+          Part[mappings`iteration`dependent, #]], Appearance -> Large], " , ",
+        "x interval (", 
+       Dynamic[
+        Part[mappings`xinterval, #]], ") : ", 
+       Slider[
+        Dynamic[
+         Part[mappings`xinterval, #]], {0, 2^(n`x - 1), 1}, ImageSize -> Tiny,
+         Appearance -> Large], 
+       Style["]", Large], 
+       Style[" \[Rule] ", Large, Bold], "x interval (", 
+       Dynamic[
+        Part[mappings`mapped`xinterval, #]], ") : ", 
+       Slider[
+        Dynamic[
+         Part[mappings`mapped`xinterval, #]], {0, 2^(n`x - 1), 1}, ImageSize -> 
+        Tiny, Appearance -> Large]}]& , 
+     Range[1, mappings`total]]], StandardForm],
+  ImageSizeCache->{4., {2.34375, 7.65625}}]], "Output",
+ CellChangeTimes->{
+  3.544864041294907*^9, 3.5448641161799507`*^9, 3.5448641582243137`*^9, 
+   3.545149131233706*^9, 3.545883951954194*^9, 3.54588440251782*^9, {
+   3.545891258630816*^9, 3.5458913310919437`*^9}, {3.545891604249734*^9, 
+   3.545891670408881*^9}, {3.5458917563764887`*^9, 3.545891761941471*^9}, 
+   3.545891835600747*^9, 3.5458919068081827`*^9, 3.545891944642453*^9, {
+   3.545891982210825*^9, 3.5458920021952753`*^9}, 3.5462118082847557`*^9, 
+   3.546212888984988*^9, 3.5462396228837357`*^9, 3.54624110471376*^9, 
+   3.546345245075816*^9, 3.546451168982123*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Mappings : \"\>", "\[InvisibleSpace]", 
+   DynamicBox[ToBoxes[intervals`mapping, StandardForm],
+    ImageSizeCache->{14., {2.25, 7.5}}]}],
+  SequenceForm["Mappings : ", 
+   Dynamic[intervals`mapping]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.544864041278442*^9, 3.544864116053669*^9, 3.5448641580994043`*^9, 
+   3.5451491305247498`*^9, 3.5458839515272903`*^9, 3.545884402392406*^9, {
+   3.545891258502522*^9, 3.545891330966117*^9}, {3.5458916041575327`*^9, 
+   3.54589167031846*^9}, {3.5458917562136993`*^9, 3.5458917617955427`*^9}, 
+   3.5458918354588203`*^9, 3.545891906665565*^9, 3.5458919444987907`*^9, {
+   3.545891982068132*^9, 3.545892002054989*^9}, 3.5462118081415777`*^9, 
+   3.546212888848157*^9, 3.546239622758029*^9, 3.546241104572874*^9, 
+   3.5463452449317913`*^9, 3.546451169001987*^9}]
+}, Open  ]]
+},
+WindowSize->{1560, 966},
+WindowMargins->{{102, Automatic}, {Automatic, 150}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (November 10, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[422, 15, 24065, 626, 1873, "Input"],
+Cell[CellGroupData[{
+Cell[24512, 645, 1184, 22, 49, "Print"],
+Cell[25699, 669, 1418, 30, 49, "Print"],
+Cell[27120, 701, 1408, 30, 49, "Print"],
+Cell[28531, 733, 1326, 25, 49, "Print"],
+Cell[29860, 760, 1323, 25, 49, "Print"],
+Cell[31186, 787, 1056, 22, 49, "Print"],
+Cell[32245, 811, 1054, 22, 49, "Print"],
+Cell[33302, 835, 1221, 25, 34, "Print"]
+}, Open  ]],
+Cell[34538, 863, 1688, 36, 40, "Output"],
+Cell[CellGroupData[{
+Cell[36251, 903, 1390, 28, 29, "Print"],
+Cell[37644, 933, 1232, 26, 29, "Print"],
+Cell[38879, 961, 1326, 26, 29, "Print"],
+Cell[40208, 989, 1653, 31, 51, "Print"],
+Cell[41864, 1022, 1341, 26, 51, "Print"]
+}, Open  ]],
+Cell[43220, 1051, 1748, 42, 27, "Output"],
+Cell[44971, 1095, 864, 16, 20, "Print"]
+}, Open  ]]
+}
+]
+*)
+

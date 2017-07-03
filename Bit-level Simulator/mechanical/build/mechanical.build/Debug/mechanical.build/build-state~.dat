@@ -1,0 +1,64 @@
+Tmechanical
+v7
+r0
+t347467334.923252
+cCheck dependencies
+cCompileC build/mechanical.build/Debug/mechanical.build/Objects-normal/x86_64/main.o "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/main.c" normal x86_64 c com.apple.compilers.gcc.4_2
+cLd "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug/mechanical" normal x86_64
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004B71B28A00000000000000EE
+t1265742474
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdio.h
+c000000004A5C14A70000000000004174
+t1247548583
+s16756
+
+N/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug/mechanical
+t1325774534
+s9184
+
+N/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/mechanical.build/Debug/mechanical.build/Objects-normal/x86_64/main.o
+t1325774534
+s2884
+
+N/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/mechanical.build/Debug/mechanical.build/Objects-normal/x86_64/mechanical.LinkFileList
+c000000004F05B6C500000000000000DB
+t1325774533
+s219
+
+N/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/main.c
+c000000004F05B6730000000000000089
+t1325774451
+s137
+i<stdio.h>
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies347467333#347467333#0(0"0(0#1#0"8247620834010738688#0"0#
+
+CCompileC build/mechanical.build/Debug/mechanical.build/Objects-normal/x86_64/main.o "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/main.c" normal x86_64 c com.apple.compilers.gcc.4_2
+s347467333.826234
+e347467334.281586
+r1
+xCompileC
+xbuild/mechanical.build/Debug/mechanical.build/Objects-normal/x86_64/main.o
+x/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/main.c
+xnormal
+xx86_64
+xc
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@158"Compile /Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/main.c347467333#347467334#0(0"0(0#0#150"/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/main.c13229817833848944#2501"    cd "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/mechanical.build/Debug/mechanical.build/mechanical-generated-files.hmap" "-I/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/mechanical.build/Debug/mechanical.build/mechanical-own-target-headers.hmap" "-I/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/mechanical.build/Debug/mechanical.build/mechanical-all-target-headers.hmap" -iquote "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/mechanical.build/Debug/mechanical.build/mechanical-project-headers.hmap" "-F/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug" "-I/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug/include" "-I/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/mechanical.build/Debug/mechanical.build/DerivedSources/x86_64" "-I/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/mechanical.build/Debug/mechanical.build/DerivedSources" -c "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/main.c" -o "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/mechanical.build/Debug/mechanical.build/Objects-normal/x86_64/main.o"0#
+
+CLd "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug/mechanical" normal x86_64
+s347467334.281714
+e347467334.923196
+r1
+xLd
+x/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug/mechanical
+xnormal
+xx86_64
+lSLF07#2@171"Link /Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug/mechanical347467334#347467334#0(0"0(0#0#0"8602971296#1045"    cd "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk "-L/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug" "-F/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug" -filelist "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/mechanical.build/Debug/mechanical.build/Objects-normal/x86_64/mechanical.LinkFileList" -mmacosx-version-min=10.6 -o "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug/mechanical"0#
+

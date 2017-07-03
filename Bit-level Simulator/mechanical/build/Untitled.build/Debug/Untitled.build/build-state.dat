@@ -1,0 +1,39 @@
+TUntitled
+v7
+r1
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004B71B28A00000000000000EE
+t1265742474
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdio.h
+c000000004A5C14A70000000000004174
+t1247548583
+s16756
+
+N/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug/Untitled
+t2
+s0
+
+N/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Untitled.build/Debug/Untitled.build/Objects-normal/x86_64/Untitled.LinkFileList
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Untitled.build/Debug/Untitled.build/Objects-normal/x86_64/main.o
+t2
+s0
+
+N/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/main.c
+c000000004F05B6730000000000000089
+t1325774451
+s137
+i<stdio.h>
+
+CCompileC build/Untitled.build/Debug/Untitled.build/Objects-normal/x86_64/main.o "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/main.c" normal x86_64 c com.apple.compilers.gcc.4_2
+r0
+
+CLd "/Users/orwa/Documents/Documents/نتاج أكاديمي/جامعة البترول/Dubai-Dhahran Thesis Presentations/Code/Mechanical/Untitled/build/Debug/Untitled" normal x86_64
+r0
+

@@ -1,0 +1,699 @@
+int main (int argc, const char * argv[]) {
+
+	// initializing the randomizer ensures that the random bits
+	// provided through random_bit will be different each time
+	// the program is executed.
+	if (-1 == initialize_randomizer()) return -1;
+	
+	// processor_size denotes the width of the calculations in
+	// the processor which is also equal to the bit length of
+	// different variables/operands.
+	const unsigned short processor_size = 24;
+	struct word_header *A = NULL, *B = NULL, *AB = NULL;
+	
+	A = create_word(processor_size);
+	B = create_word(processor_size);	
+	AB = create_word(processor_size << 1);
+
+	word_randomize(A);
+	word_randomize(B);
+	
+	char *buffer1, *buffer2;
+    printf("A: %s (0x%s)\n", buffer1 = word_makestring(A, 2), buffer2 = word_makestring(A, 16));
+	free(buffer1);
+	free(buffer2);	
+	printf("B: %s (0x%s)\n", buffer1 = word_makestring(B, 2), buffer2 = word_makestring(B, 16));
+	free(buffer1);
+	free(buffer2);	
+	
+	printf("Mathematica code for A: \"%s\"\n"
+		   "Mathematica code for B: \"%s\"\n", 
+		   buffer1 = word_makemathematicacode(A),
+		   buffer2 = word_makemathematicacode(B));
+	free(buffer1);
+	free(buffer2);
+	
+	char comparison = word_op_compare(A, B);
+	printf("Comparison between A and B yields: %d (%s)", (int) comparison, 
+		   (comparison == 0 ? "EQUAL" : (comparison == -1 ? "LESS THAN" : "GREATER THAN")));
+	
+	word_op_multiply(AB, A, B);
+	
+	printf("\nA*B: %s (0x%s)\n", buffer1 = word_makestring(AB, 2), buffer2 = word_makestring(AB, 16));
+	free(buffer1);
+	free(buffer2);
+	
+	printf("Mathematica code for multiplication: \"%s * %s\"\n", 
+		   buffer1 = word_makemathematicacode(A),
+		   buffer2 = word_makemathematicacode(B));
+	free(buffer1);
+	free(buffer2);
+	
+	printf("Mathemtica code for the result: \"%s\"\n", buffer1 = word_makemathematicacode(AB));
+	free(buffer1);
+	
+	// extract value of (digit_position)'th hexadecimal digit
+	unsigned int* hexadecimal_digits = word_makelist(AB, 4);
+	const unsigned char digit_position = hexadecimal_digits[0] - 3;
+	unsigned int some_digit = hexadecimal_digits[hexadecimal_digits[0] - digit_position];
+	free(hexadecimal_digits);
+	
+	// print it out
+	printf("\n%u'th HEX digit of AB is %d\n", (unsigned int) digit_position, some_digit);
+
+	// store a textual representation of AB before the change
+	buffer1 = word_makestring(AB, 16);
+	
+	// make some change based on that digit
+	struct word_header* added_value = create_word(4);
+	/*
+	BITS(added_value)[0] = (1 & (15 - some_digit)) >> 0;
+	BITS(added_value)[1] = (2 & (15 - some_digit)) >> 1;
+	BITS(added_value)[2] = (4 & (15 - some_digit)) >> 2;
+	BITS(added_value)[3] = (8 & (15 - some_digit)) >> 3;
+	
+	BITS(added_value)[0] = (1 & some_digit) >> 0;
+	BITS(added_value)[1] = (2 & some_digit) >> 1;
+	BITS(added_value)[2] = (4 & some_digit) >> 2;
+	BITS(added_value)[3] = (8 & some_digit) >> 3;
+	*/
+	
+	word_op_load(added_value, 15 - some_digit, 0, 4);
+	
+	comparison = word_op_compare_constant(added_value, 5);
+	printf("Digit value %d is %s to \"5\"\n", 15 - some_digit,
+		   (comparison == 0 ? "EQUAL" : (comparison == -1 ? "LESS THAN" : "GREATER THAN")));
+	
+	// make the change
+	word_op_add(AB, added_value, 1, digit_position * 4);
+	word_deallocate(added_value);
+	
+	//word_op_leftshift(AB, 4);
+	//word_op_rightshift(AB, 4);
+	
+	//word_op_load(AB, 0xFAFA, AB->length-16, 16);
+	//word_op_load(AB, 0xFF, 100, 8);
+	
+	// print the value before and after
+	printf("AB before: \"%s\", after: \"%s\" (overflow = %s, underflow = %s)\n", buffer1, 
+		   buffer2 = word_makestring(AB, 16),
+		   (AB->overflow ? "YES" : "NO"), (AB->underflow ? "YES" : "NO"));
+	free(buffer1);
+	free(buffer2);	
+	
+	word_deallocate(A);
+	word_deallocate(B);
+	//printf("\nWIKIPEDIA isqrt(%d) = %d\n", 4, (int) isqrt(4));
+	
+	struct word_header *C = create_word_duplicate(AB), *squareofC;
+	
+	word_deallocate(AB);	
+	
+	word_op_load(C, 144, 0, 8);
+	squareofC = word_op_isqrt(C);
+	
+	printf("\nSquare of %s is %s\n", 
+		   buffer1 = word_makemathematicacode(C), 
+		   buffer2 = word_makemathematicacode(squareofC));
+	
+	free(buffer1);
+	free(buffer2);
+	
+	word_deallocate(C);
+	word_deallocate(squareofC);
+	
+    return 0;
+}
+
+// -------------------------------------------------------------------------------------
+// word_op_compare TEST MODULE
+// -------------------------------------------------------------------------------------
+int main (int argc, const char * argv[]) {
+
+	initialize_randomizer();
+	
+	word_pointer a, b;
+	char* buffer1, *buffer2;
+	
+	a = create_word(20);
+	b = create_word(20);	
+	a->is_signed = 0;
+	b->is_signed = 0;
+	
+	for (unsigned int i = 0; i < 10; ++i) {
+		word_randomize(a);
+		word_randomize(b);
+		
+		buffer1 = word_makestring(a, 2);
+		buffer2 = word_makestring(b, 2);	
+		
+		char relation = word_op_compare(a, b);
+		
+		printf("%c%s %c %c%s\n", 
+			   word_sign(a), buffer1, 
+			   (relation == 0 ? '=' : (relation == -1 ? '<' : '>')),
+			   word_sign(b), buffer2);
+		
+		free(buffer1);
+		free(buffer2);	
+	}
+		
+	free(a);
+	free(b);	
+	
+	return 0;
+}
+
+
+// -------------------------------------------------------------------------------------
+// word_op_compare_constant TEST MODULE
+// -------------------------------------------------------------------------------------
+int main (int argc, const char * argv[]) {
+
+	initialize_randomizer();
+	
+	word_pointer a;
+	int b;
+	char* buffer1;
+	char buffer2[32];
+	
+	a = create_word(20);
+	a->is_signed = 0;
+	
+	for (unsigned int i = 0; i < 10; ++i) {
+		word_randomize(a);
+		b = rand()>> 11;
+		
+		buffer1 = word_makestring(a, 2);	
+		
+		unsigned int abs_b = (b < 0 ? -b : b);
+		unsigned char i = 0;
+		while (0 != abs_b) {
+			abs_b >>= 1;
+			++i;
+		}
+		
+		abs_b = (b < 0 ? -b : b);
+		buffer2[i] = '\0';
+		for (char j = i - 1; j >= 0; --j) {
+			buffer2[j] = '0' + (abs_b & 1);
+			abs_b >>= 1;
+		}
+		
+		char relation = word_op_compare_constant(a, b);
+		
+		printf("%c%s %c %c%s\n", 
+			   word_sign(a), buffer1, 
+			   (relation == 0 ? '=' : (relation == -1 ? '<' : '>')),
+			   (b < 0 ? '-' : '\0'), buffer2);
+		
+		free(buffer1);
+	}
+		
+	free(a);
+	
+	return 0;
+}
+
+// -------------------------------------------------------------------------------------
+// word_op_rightshift TEST MODULE
+// -------------------------------------------------------------------------------------
+int main (int argc, const char * argv[]) {
+
+	initialize_randomizer();
+	
+	word_pointer a, b;
+	char* buffer1, *buffer2;
+	
+	a = create_word(20);
+	a->is_signed = 1;
+	
+	word_randomize(a);
+	b = create_word_duplicate(a);
+	
+	for (unsigned int i = 0; i < 10; ++i) {
+		
+		word_op_rightshift(b, 1);
+		
+		buffer1 = word_makestring(a, 2);	
+		buffer2 = word_makestring(b, 2);	
+		
+		printf("%c%s >> %2u == %c%s (UNDERFLOW = %s)\n", 
+			   word_sign(a), buffer1, i+1, word_sign(b), buffer2,
+			   (b->underflow ? "YES" : "NO"));
+		
+		free(buffer1);
+		free(buffer2);
+	}
+		
+	free(b);
+	free(a);
+	
+	return 0;
+}
+
+// -------------------------------------------------------------------------------------
+// word_op_leftshift TEST MODULE
+// -------------------------------------------------------------------------------------
+int main (int argc, const char * argv[]) {
+
+	initialize_randomizer();
+	
+	word_pointer a, b;
+	char* buffer1, *buffer2;
+	
+	a = create_word(20);
+	a->is_signed = 1;
+	
+	word_randomize(a);
+	word_op_rightshift(a, 2);
+	
+	b = create_word_duplicate(a);
+	
+	for (unsigned int i = 0; i < 10; ++i) {
+		
+		word_op_leftshift(b, 1);
+		
+		buffer1 = word_makestring(a, 2);	
+		buffer2 = word_makestring(b, 2);	
+		
+		printf("%c%s << %2u == %c%s (OVERFLOW = %s)\n", 
+			   word_sign(a), buffer1, i+1, word_sign(b), buffer2,
+			   (b->overflow ? "YES" : "NO"));
+		
+		free(buffer1);
+		free(buffer2);
+	}
+		
+	free(b);
+	free(a);
+	
+	return 0;
+}
+
+// -------------------------------------------------------------------------------------
+// word_op_load(_constant) TEST MODULE
+// -------------------------------------------------------------------------------------
+int main (int argc, const char * argv[]) {
+
+	initialize_randomizer();
+	
+	word_pointer word, loaded_word;
+	char* buffer1, *buffer2;
+	
+	word = create_word(6);
+
+	// make word equal to -1
+	word_op_bitinvert(word);
+	word->is_signed = 1;
+	
+	loaded_word = create_word(8);
+	loaded_word->is_signed = 1;
+	
+	word_op_load_constant(loaded_word, -6 /* 1010 */, 0, 10 /* 4 bits*/);
+	
+	//word_op_load_constant(word, -6 /* 1010 */, 2 /* times 4 */, 6);
+	word_op_load(word, loaded_word, 2);
+	
+	buffer1 = word_makestring(word, 2);
+	buffer2 = word_makestring(loaded_word, 2);
+	printf("loaded_word = %c%s = %.0f (overflow = %s, underflow = %s)\n"
+		   "word = %c%s = %.0f (overflow = %s, underflow = %s)\n",
+		   word_sign(loaded_word), buffer2, 
+		   word_approximatevalue(loaded_word),
+		   loaded_word->overflow ? "YES": "NO", loaded_word->underflow ? "YES" : "NO",  
+		   word_sign(word), buffer1, 
+		   word_approximatevalue(word),
+		   word->overflow ? "YES": "NO", word->underflow ? "YES" : "NO");
+	
+	free(buffer1);
+	free(buffer2);	
+	
+	free(loaded_word);
+	free(word);
+	
+	return 0;
+}
+
+// -------------------------------------------------------------------------------------
+// word_op_add TEST MODULE
+// -------------------------------------------------------------------------------------
+int main (int argc, const char * argv[]) {
+
+	initialize_randomizer();
+	
+	word_pointer word, added_value;
+	char* buffer1, *buffer2, *buffer3;
+	double value_before = 0.0;
+	char sign_before = '\0';
+	
+	word = create_word(10);
+
+	// make word equal to -2
+	word_op_bitinvert(word);
+	word->is_signed = 1;
+	
+	word_op_load_constant(word, -2 /* 10*/, 0, 2);
+	
+	added_value = create_word(3);
+	word_op_load_constant(added_value, +2, 0, 2);
+	
+	buffer1 = word_makestring(word, 2);
+	value_before = word_approximatevalue(word);
+	sign_before = word_sign(word);
+	
+	//word_op_load_constant(word, -6 /* 1010 */, 2 /* times 4 */, 6);
+	word_op_add(word, added_value, +1, 0);
+	
+	buffer2 = word_makestring(word, 2);
+	buffer3 = word_makestring(added_value, 2);
+	printf("added_value = +%s = %.0f (overflow = %s, underflow = %s)\n"
+		   "word (before) = %c%s = %.0f (overflow = NO, underflow = NO)\n"
+		   "word (after)  = %c%s = %.0f (overflow = %s, underflow = %s)\n",		   
+		   buffer3, word_approximatevalue(added_value),
+		   added_value->overflow ? "YES": "NO", added_value->underflow ? "YES" : "NO",  
+		   sign_before, buffer1, value_before,
+		   word_sign(word), buffer2, word_approximatevalue(word),
+		   word->overflow ? "YES": "NO", word->underflow ? "YES" : "NO");
+	
+	free(buffer1);
+	free(buffer2);	
+	free(buffer3);
+	
+	free(added_value);
+	free(word);
+	
+	return 0;
+}
+
+// -------------------------------------------------------------------------------------
+// word_op_multiply TEST MODULE
+// -------------------------------------------------------------------------------------
+int main (int argc, const char * argv[]) {
+
+	initialize_randomizer();
+	
+	word_pointer word, multiplier;
+	char* buffer1, *buffer2, *buffer3;
+	double value_before = 0.0;
+	char sign_before = '\0';
+	
+	word = create_word(10);
+
+	// make word equal to -2
+	word_op_bitinvert(word);
+	word->is_signed = 1;
+	BITS(word)[word->length - 1] = 0;
+	BITS(word)[word->length - 2] = 0;	
+	BITS(word)[word->length - 3] = 0;	
+	
+	word_op_load_constant(word, -2 /* 10*/, 0, 2);
+	
+	multiplier = create_word(4);
+	multiplier->is_signed = 1;
+	word_op_load_constant(multiplier, -4, 0, 10);
+	
+	buffer1 = word_makestring(word, 2);
+	value_before = word_approximatevalue(word);
+	sign_before = word_sign(word);
+	
+	word_op_multiply(word, multiplier, word);
+	
+	buffer2 = word_makestring(word, 2);
+	buffer3 = word_makestring(multiplier, 2);
+	printf("multiplier = %c%s = %.0f (overflow = %s, underflow = %s)\n"
+		   "word (before) = %c%s = %.0f (overflow = NO, underflow = NO)\n"
+		   "word (after)  = %c%s = %.0f (overflow = %s, underflow = %s)\n",		   
+		   word_sign(multiplier), buffer3, word_approximatevalue(multiplier),
+		   multiplier->overflow ? "YES": "NO", multiplier->underflow ? "YES" : "NO",  
+		   sign_before, buffer1, value_before,
+		   word_sign(word), buffer2, word_approximatevalue(word),
+		   word->overflow ? "YES": "NO", word->underflow ? "YES" : "NO");
+	
+	free(buffer1);
+	free(buffer2);	
+	free(buffer3);
+	
+	free(multiplier);
+	free(word);
+	
+	return 0;
+}
+
+// OLD ALGORITHM LOOP
+
+/*
+int main (int argc, const char * argv[]) {
+	
+	// initializing the randomizer ensures that the random bits
+	// provided through random_bit will be different each time
+	// the program is executed.
+	if (-1 == initialize_randomizer()) return -1;
+	
+	// system parameters
+	const unsigned short algorithm_m = 3, 
+		algorithm_n = 6, algorithm_Z = 0;
+	
+	const unsigned short algorithm_overhead_iterations = 
+		(unsigned short) ceil((double) algorithm_Z / algorithm_m);
+	const unsigned char algorithm_overhead_digit = 
+		(unsigned char) (algorithm_Z % algorithm_m > 0 ? 1 : 0);	
+	
+	// processor_size denotes the width of the calculations in
+	// the processor which is also equal to the bit length of
+	// different variables/operands.
+	const unsigned short processor_size = algorithm_m * algorithm_n;
+	struct word_header *A = NULL, *B = NULL, *AB = NULL, *squareofAB = NULL;
+	
+	A = create_word(processor_size);
+	B = create_word(processor_size);	
+	AB = create_word(processor_size << 1);
+	
+	word_randomize(A);
+	word_randomize(B);
+	
+	word_op_rightshift(A, (processor_size >> 1) + 0);
+	word_op_rightshift(B, (processor_size >> 1) + 0);	
+	
+	word_op_multiply(A, A, A);
+	word_op_multiply(B, B, B);
+	
+	//word_op_normalize(A, 0);
+	//word_op_normalize(B, 0);	
+		
+	word_op_multiply(AB, A, B);
+	squareofAB = word_op_isqrt(AB);
+
+	squareofAB->length >>= 1;
+	
+	char *buffer1 = NULL, *buffer2 = NULL, 
+		*buffer3 = NULL, *buffer4 = NULL;
+	
+	printf("A: %s (radix = %u) | \"%s\"\n"
+		   "B: %s (radix = %u) | \"%s\"\n\n", 
+		   buffer3 = word_makestring(A, 1 << algorithm_m), 1 << algorithm_m,
+		   buffer1 = word_makemathematicacode(A),
+		   buffer4 = word_makestring(B, 1 << algorithm_m), 1 << algorithm_m,		   
+		   buffer2 = word_makemathematicacode(B));
+
+	free(buffer3);
+	free(buffer4);	
+	
+	printf("A * B: \"%s\"\n"
+		   "sqrt(A * B): \"N[Sqrt[%s * %s]]\"\n"
+		   "sqrt(A * B): \"%s\"\n\n",
+		   buffer4 = word_makemathematicacode(squareofAB),
+		   buffer1, buffer2,
+		   buffer3 = word_makemathematicacode(AB));
+	
+	free(buffer1);
+	free(buffer2);
+	free(buffer3);
+	free(buffer4);
+	
+	printf("A          : %s\n"
+		   "B          : %s\n"
+		   "A * B      : %s\n"
+		   "sqrt(A * B): %s\n\n", 
+		   buffer1 = word_makestring(A, 1 << algorithm_m),
+		   buffer2 = word_makestring(B, 1 << algorithm_m),
+		   buffer4 = word_makestring(AB, 1 << algorithm_m),
+		   buffer3 = word_makestring(squareofAB, 1 << algorithm_m));
+	free(buffer1);
+	free(buffer2);
+	free(buffer3);	
+	free(buffer4);	
+	
+	// widths of the 3 different registers needed for carrying out the algorithm
+	const unsigned short result_register_size = 
+		algorithm_m * (algorithm_n + algorithm_overhead_digit);
+	const unsigned short multiplicand_register_size = 
+		algorithm_m * (2 * algorithm_n + algorithm_overhead_iterations - 1);
+	const unsigned short residual_register_size = 
+		2 * algorithm_m * (algorithm_n + 1) + 2 * algorithm_Z + 1;
+	
+	// the registers defined as word structures of appropriate sizes
+	struct word_header 
+		*result_register = create_word(result_register_size), 
+		*multiplicand_register = create_word(multiplicand_register_size),
+		*residual_register = create_word(residual_register_size),
+		*one_digit_multiplier = create_word(algorithm_m);
+	
+	// digits of the delayed result for easy access
+	struct word_header *delayed_result = create_word(squareofAB->length + algorithm_Z);	
+	word_op_load(delayed_result, squareofAB, 0);
+	unsigned int *delayed_result_digits = word_makelist(delayed_result, algorithm_m);
+	
+	printf("DELAYED RESULT DIGITS (Z = %u):\n  ", algorithm_Z);
+	for (unsigned int i = 1; i <= delayed_result_digits[0]; ++i) {
+		printf("s'%u = %u", i, delayed_result_digits[i]);
+		if (i < delayed_result_digits[0])
+			printf(", ");
+	}
+	printf("\n");
+	
+	// digits of the multiplier for easy access
+	unsigned int *multiplier_digits = word_makelist(B, algorithm_m);
+	
+	printf("MULTIPLIER DIGITS:\n  ");
+	for (unsigned int i = 1; i <= multiplier_digits[0]; ++i) {
+		printf("b%u = %u", i, multiplier_digits[i]);
+		if (i < multiplier_digits[0])
+			printf(", ");
+	}
+	printf("\n\n");
+
+	// {A0}
+	word_op_load(multiplicand_register, A, 0);
+	
+	//  W0
+	word_op_load(residual_register, A, 0);
+	word_op_load_constant(one_digit_multiplier, multiplier_digits[1], 0, algorithm_m);
+	word_op_multiply(residual_register, one_digit_multiplier, residual_register);
+	
+	printf("{S0} = %s\n{A0} = %s\n W0  = %s (overflow: %s)\n\n", 
+		   buffer1 = word_makestring(result_register, 1 << algorithm_m),
+		   buffer2 = word_makestring(multiplicand_register, 1 << algorithm_m),
+		   buffer3 = word_makestring(residual_register, 1 << algorithm_m),
+		   (residual_register->overflow ? "YES" : "NO"));
+	free(buffer1);
+	free(buffer2);
+	free(buffer3);	
+	
+	printf("ALGORITHM BEGINS:\n\n");
+	
+	for(unsigned int i = 1; i <= algorithm_n + algorithm_overhead_iterations; ++i) {
+		printf("- ITERATION %u:\n", i);
+		
+		printf("  s'%2u = %u\n", i, delayed_result_digits[i]);
+		
+		printf("  {S%2u} = %s\n"
+			   "  {A%2u} = %s\n", i - 1,
+			   buffer1 = word_makestring(result_register, 1 << algorithm_m), i - 1,
+			   buffer2 = word_makestring(multiplicand_register, 1 << algorithm_m));
+		free(buffer1);
+		free(buffer2);
+		
+		//
+		// RESIDUAL UPDATE LINE
+		//
+		word_op_leftshift(residual_register, 2 * algorithm_m);
+		
+		printf("  ------\n");
+		printf("   P%2u  = %s (overflow: %s)\n", i, 
+			   buffer1 = word_makestring(residual_register, 1 << algorithm_m),
+			   (residual_register->overflow ? "YES" : "NO"));
+		free(buffer1);
+		
+		// term one formation
+		struct word_header* term1 = create_word(algorithm_m * (i + 2) + 1);
+		word_op_load(term1, result_register, algorithm_m + 1);
+		word_op_load_constant(term1, delayed_result_digits[i], 0, algorithm_m);
+		
+		word_op_load_constant(one_digit_multiplier, delayed_result_digits[i], 0, algorithm_m);
+		word_op_multiply(term1, one_digit_multiplier, term1);
+		
+		// term one subtraction
+		word_op_add(residual_register, term1, -1, (algorithm_m * (algorithm_n + 1)) + (2 * algorithm_Z));
+		
+		// illustration of term one
+		struct word_header* illustration_word = create_word(residual_register->length);
+		word_op_load(illustration_word, term1, (algorithm_m * (algorithm_n + 1)) + (2 * algorithm_Z));
+		
+		buffer1 = word_makestring(illustration_word, 1 << algorithm_m);
+		
+		buffer2 = buffer1;
+		while ('\0' != *buffer2) ++buffer2;
+		for (unsigned int j = 0; j < (algorithm_n + 1) + ceil((double) 2 * algorithm_Z /algorithm_m); ++j)
+			*(--buffer2) = ' ';
+		*(buffer2) = '.';
+		
+		printf("  term1   %s (-)\n", buffer1);
+		free(buffer1);
+		word_deallocate(term1);
+		word_deallocate(illustration_word);
+		
+		// print out the updated residual
+		printf("   W%2u  = %s (overflow: %s)\n", i,
+ 			   buffer1 = word_makestring(residual_register, 1 << algorithm_m),
+			   (residual_register->overflow ? "YES" : "NO"));
+		free(buffer1);
+		
+		// term two formation
+		struct word_header* term2 = create_word_duplicate(multiplicand_register);
+		
+		word_op_load_constant(one_digit_multiplier, 
+							  (i + 1 <= multiplier_digits[0] ? multiplier_digits[i + 1] : 0), 0, algorithm_m);
+		word_op_multiply(term2, one_digit_multiplier, term2);
+		
+		//term two addition
+		word_op_add(residual_register, term2, +1, algorithm_m);
+					 
+		// illustration of term two
+		illustration_word = create_word(residual_register->length);
+		word_op_load(illustration_word, term2, algorithm_m);
+
+		printf("  term2   %s (+)\n", buffer1 = word_makestring(illustration_word, 1 << algorithm_m));
+		free(buffer1);
+		word_deallocate(term2);
+		word_deallocate(illustration_word);
+		
+		// print out the updated residual
+		printf("   W%2u  = %s (overflow: %s)\n"
+			   "  ------\n", i,
+ 			   buffer1 = word_makestring(residual_register, 1 << algorithm_m),
+			   (residual_register->overflow ? "YES" : "NO"));
+		free(buffer1);
+
+		// update result
+		word_op_leftshift(result_register, algorithm_m);
+		word_op_load_constant(result_register, delayed_result_digits[i], 0, algorithm_m);
+		
+		// update multiplicand
+		word_op_leftshift(multiplicand_register, algorithm_m);
+		printf("  {S%2u} = %s\n"
+			   "  {A%2u} = %s\n", i,
+			   buffer1 = word_makestring(result_register, 1 << algorithm_m), i,
+			   buffer2 = word_makestring(multiplicand_register, 1 << algorithm_m));
+		free(buffer1);
+		free(buffer2);
+		
+		printf("\n");
+	}
+
+	word_deallocate(result_register);
+	word_deallocate(multiplicand_register);
+	word_deallocate(residual_register);	
+	word_deallocate(one_digit_multiplier);
+	free(multiplier_digits);
+	word_deallocate(delayed_result);
+	free(delayed_result_digits);
+
+	word_deallocate(A);
+	word_deallocate(B);
+	word_deallocate(AB);	
+	word_deallocate(squareofAB);
+	
+    return 0;
+}
+*/
