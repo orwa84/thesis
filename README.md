@@ -39,7 +39,7 @@ circuit in every iteration (i.e. with every tick of the digital clock).
 The higher this number is, the faster your circuit is going to be.
 
 However, this is going to be at the expense of the complexity of the hardware needed (both in terms
-of the number of logic gates as well as in terms of the ROM size required to store the SRT table date).
+of the number of logic gates as well as in terms of the ROM size required to store the SRT table).
 
 "2" is considered a good choice for a practically-sized unit.
 
