@@ -9,7 +9,7 @@ known as the *digit-recurrence family of algorithms*.
 
 In my M.Sc. thesis, entitled *"Incorporating Multiplication Into Digit-Recurrence Division to Calculate
 `sqrt(a*b)`"* ([linked here](https://core.ac.uk/download/pdf/146514396.pdf)), I have delved into the derivation 
-and the hardware implementation of a a fused multiplier and a square rooting unit (just in case, you thought
+and the hardware implementation of a fused multiplier and a square rooting unit (just in case, you thought
 having a such a machine instruction would change your life, obviously I did!).
 
 Any such unit, while based on the digit-recurrence family of algorithms, need a "guessing table", usually
