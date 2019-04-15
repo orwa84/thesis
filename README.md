@@ -7,8 +7,8 @@ Moreover, I am guessing that you are just as fascinated (as I am) with the paper
 of doing division and (not so often taught nowadays) the square root. This family of algorithms is formally
 known as the *digit-recurrence family of algorithms*.
 
-In my M.Sc. thesis, entitled *"Incorporating Multiplication Into Digit-Recurrence Division to Calculate
-`sqrt(a*b)`"* ([linked here](https://core.ac.uk/download/pdf/146514396.pdf)), I have delved into the derivation 
+In my M.Sc. thesis, entitled *"Incorporating Multiplication Into Digit-Recurrence Division and the Square Root to Calculate
+`(a*b)/c`/`sqrt(a*b)`"* ([linked here](https://core.ac.uk/download/pdf/146514396.pdf)), I have delved into the derivation 
 and the hardware implementation of a fused multiplier and a square rooting unit (just in case, you thought
 having a such a machine instruction would change your life, obviously I did!).
 
