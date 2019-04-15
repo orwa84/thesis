@@ -33,13 +33,15 @@ It is very simple, the first thing you need to do is to install Mathematica 8.0 
 
 > ![System Parameters Notebook View -in Mathematica 9.0](https://raw.githubusercontent.com/orwa84/thesis/master/figures/system-parameters-radix4.png)
 
-As the name suggests, this is where you make the design decisions most crucial to the design of your hardware unit, the most important of which is *"bits per high-radix digit"* which is a twisted way of describing the number of binary bits which you synchronous digital
-circuit will be able to crunch in every iteration (i.e. with every tick of the clock).
+As the name suggests, this is where you make the decisions most crucial to the design of your hardware unit, the most important of which is *"bits per high-radix digit"* which is a lengthy way of describing the number of bits to be consumed by your digital
+circuit in every iteration (i.e. with every tick of the digital clock).
 
-The higher this number is, the faster your circuit is going to be, but the more complex the hardware will need to be (both in terms
-of the number of logic gates as well as in terms of the ROM needed to store the SRT table).
+The higher this number is, the faster your circuit is going to be.
 
-"2" is considered a good choice for a practically-sized unit and SRT table.
+However, this is going to be at the expense of the complexity of the hardware needed (both in terms
+of the number of logic gates as well as in terms of the ROM size required to store the SRT table date).
+
+"2" is considered a good choice for a practically-sized unit.
 
 ### Second notebook: Designer Cell
 
