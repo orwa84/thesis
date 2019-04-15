@@ -58,13 +58,12 @@ Note that to display the table in colors, you will have to *click a checkbox* th
 
 ## Concluding remarks
 
-As far as I know, there is no software currently available in the public domain that permits generating the contents of an SRT table
-to be used within of a Digit-Recurrence Divier/Square-Rooting unit that is as powerful, and rigorously verified as this one.
+As far as I know, there is no software currently available in the public domain that permits generating the contents of the SRT table
+used within of a Digit-Recurrence Divider/Square-Rooting unit that is as powerful, and rigorously verified as this one.
 
-I hope that by using it that you will admire the beauty of this class of algorithms as much as I always did, and that you will go over
-the way I explain them in the first part of my thesis. I believe I have done it to the best of a man's ability which is an insignificant
-contribution to the knowledge of min kind but a one that I invested in, which has taken a few years of my life.
+I hope that by using it that you will get to admire the beauty of this class of algorithms as much as I did, and that you will go over
+the way I explain them in the first part of my thesis.
 
-For any queries, please do not hesitate to get in touch with me.
+For any questions or inqueries, please do not hesitate to get in touch with me.
 
 *written by Orwa Diraneyya on 16th of April, 2019*
